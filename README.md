@@ -1,5 +1,5 @@
 # Catalog Synchronizer
-Establishes an integration pattern for synchronizing Sitecore commerce catalogs, categories and products
+Establishes an integration pattern for synchronizing Sitecore commerce catalogs, categories and products easily
 ## Purpose
 
 Almost all Sitecore commerce projects require a custom process to be developed to import catalogs, categories and products.
