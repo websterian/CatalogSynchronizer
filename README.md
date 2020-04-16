@@ -41,7 +41,7 @@ We encourage you to add features to this project so it can be leveraged by other
 
 ## Installing\Running
 
-The main plugin for 9.3 is here
+The main plugin for 9.3 is [here](https://github.com/websterian/CatalogSynchronizer/tree/master/9.3/Sitecore.Commerce.Engine.SDK.5.0.76/src/Sitecore.Services.Examples.SynchronizeCatalog/Sitecore.Services.Examples.SynchronizeCatalog)
 
 ### To run from visual studio
 
