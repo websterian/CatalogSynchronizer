@@ -34,7 +34,40 @@ We encourage you to add features to this project so it can be leveraged by other
 - Setting of Tags is supported
 - Setting of List prices is supported for Products and Variants
 
-## Future features: -
+## Future features
 
 - Support for price cards
 - Support for inventory
+
+## Installing\Running
+
+The main plugin for 9.3 is here
+
+### To run from visual studio
+
+This repo is a full copy of the Commerce SDK
+
+1. Download or clones the repo
+2. Go to &quot;9.3\Sitecore.Commerce.Engine.SDK.5.0.76&quot;
+3. Open Customer.Sample.Solution930.sln
+4. Set the &quot;Sitecore.Commerce.Engine&quot; project as the startup project.
+5. Change all the configuration files to use your databases
+6. Hit start.
+7. For more information see the standard Sitecore commerce documents for setting up a developer machine.
+
+### To setup postman collection
+
+1. &quot;9.3\Sitecore.Commerce.Engine.SDK.5.0.76\src\Sitecore.Services.Examples.SynchronizeCatalog\Sitecore.Services.Examples.SynchronizeCatalog&quot;
+2. Import Catalog Synchronization.postman\_collection.json into postman.
+
+#### To run a test catalog import
+
+1. Import the collection as described above
+2. Go to the collection named &quot;Catalog Synchronization&quot;
+3. Run one of the requests e.g. UpdateCreateCatalogCategoryProductsAndVariants
+
+#### To run the minion
+
+1. Import the collection as described above
+2. Go to the collection named &quot;Catalog Synchronization&quot;
+3. Run the &quot;Run SynchronizeCatalogMinion&quot; request
