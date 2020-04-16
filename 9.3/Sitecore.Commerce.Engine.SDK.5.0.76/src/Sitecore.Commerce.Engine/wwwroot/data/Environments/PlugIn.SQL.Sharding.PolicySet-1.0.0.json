@@ -1,0 +1,341 @@
+{
+  "$type": "Sitecore.Commerce.Core.PolicySet, Sitecore.Commerce.Core",
+  "Id": "Entity-PolicySet-ShardingPolicySet",
+  "Version": 1,
+  "IsPersisted": false,
+  "Name": "ShardingPolicySet",
+  "Policies": {
+    "$type": "System.Collections.Generic.List`1[[Sitecore.Commerce.Core.Policy, Sitecore.Commerce.Core]], mscorlib",
+    "$values": [
+      {
+        "$type": "Sitecore.Commerce.Plugin.SQL.EntityShardingPolicy, Sitecore.Commerce.Plugin.SQL",
+        "Expressions": {
+          "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
+          "$values": [
+            "Entity-VersioningEntity.*?$",
+            "VersioningEntity-.*?$"
+          ]
+        },
+        "TableName": "VersioningEntities"
+      },
+      {
+        "$type": "Sitecore.Commerce.Plugin.SQL.EntityShardingPolicy, Sitecore.Commerce.Plugin.SQL",
+        "Expressions": {
+          "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
+          "$values": [
+            "Entity-LocalizationEntity.*?$",
+            "LocalizationEntity-.*?$"
+          ]
+        },
+        "TableName": "LocalizationEntities"
+      },
+      {
+        "$type": "Sitecore.Commerce.Plugin.SQL.EntityShardingPolicy, Sitecore.Commerce.Plugin.SQL",
+        "Expressions": {
+          "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
+          "$values": [
+            "Entity-Tombstone.*?$",
+            "Tombstone-.*?$"
+          ]
+        },
+        "TableName": "CommerceEntities"
+      },
+      {
+        "$type": "Sitecore.Commerce.Plugin.SQL.EntityShardingPolicy, Sitecore.Commerce.Plugin.SQL",
+        "Expressions": {
+          "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
+          "$values": [
+            "Entity-Order.*?$",
+            "Entity-ReturnMerchandiseAuthorization.*?$",
+            "Entity-SalesActivity.*?$",
+            "Order-.*?$",
+            "ReturnMerchandiseAuthorization-.*?$",
+            "SalesActivity-.*?$"
+          ]
+        },
+        "TableName": "OrdersEntities"
+      },
+      {
+        "$type": "Sitecore.Commerce.Plugin.SQL.ListShardingPolicy, Sitecore.Commerce.Plugin.SQL",
+        "Expressions": {
+          "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
+          "$values": [
+            "^List-Order.*?$",
+            "^List-PendingOrder.*?$",
+            "^List-OnHoldOrder.*?$",
+            "^List-ProblemOrder.*?$",
+            "^List-ReleasedOrder.*?$",
+            "^List-CompletedOrder.*?$",
+            "^List-CancelledOrder.*?$",
+            "^List-OrdersIndex.*?$",
+            "^List-FraudOrder.*?$",
+            "^List-ShippedOrder.*?$",
+            "^List-AnonymousOrder.*?$",
+            "^List-AuthenticatedOrder.*?$",
+            "^List-PendingRmas.*?$",
+            "^List-RefundPendingRmas.*?$",
+            "^List-CompletedRmas.*?$",
+            "^List-ProblemRmas.*?$",
+            "^List-ReturnMerchandiseAuthorization.*?$",
+            "^List-SalesActivities.*?$",
+            "^List-SettleSalesActivities.*?$",
+            "^List-SettledSalesActivities.*?$",
+            "^List-ProblemSalesActivities.*?$",
+            "Entity-ReturnMerchandiseAuthorization.*?$",
+            "Entity-SalesActivity.*?$",
+            "^Entity-Order.*?$",
+            "^List-WaitingForAvailabilityOrders.*?$"
+          ]
+        },
+        "TableName": "OrdersLists"
+      },
+      {
+        "$type": "Sitecore.Commerce.Plugin.SQL.EntityShardingPolicy, Sitecore.Commerce.Plugin.SQL",
+        "Expressions": {
+          "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
+          "$values": [
+            "Entity-PromotionBook.*?$",
+            "PromotionBook-.*?$",
+            "Entity-Promotion.*?$",
+            "Promotion-.*?$",
+            "Entity-Coupon.*?$",
+            "Coupon-.*?$",
+            "Entity-PrivateCouponGroup.*?$",
+            "PrivateCouponGroup-.*?$"
+          ]
+        },
+        "TableName": "PromotionsEntities"
+      },
+      {
+        "$type": "Sitecore.Commerce.Plugin.SQL.ListShardingPolicy, Sitecore.Commerce.Plugin.SQL",
+        "Expressions": {
+          "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
+          "$values": [
+            "^List-Promotions.*?$",
+            "^List-Promotion.*?PrivateCoupon.*?$",
+            "^List-Promotion.*?PublicCoupon.*?$",
+            "^List-Promotion.*?UnallocatedCoupon.*?$",
+            "^List-Promotion.*?AllocatedCoupon.*?$",
+            "^List-PromotionBooks.*?$",
+            "^List-Coupon.*?$",
+            "^List-Coupons.*?$",
+            "^List-PrivateCouponGroup.*?$",
+            "Entity-PromotionBook.*?$",
+            "Entity-Promotion.*?$",
+            "Entity-Coupon.*?$",
+            "Entity-PrivateCouponGroup.*?$"
+          ]
+        },
+        "TableName": "PromotionsLists"
+      },
+      {
+        "$type": "Sitecore.Commerce.Plugin.SQL.EntityShardingPolicy, Sitecore.Commerce.Plugin.SQL",
+        "Expressions": {
+          "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
+          "$values": [
+            "Entity-PriceBook.*?$",
+            "PriceBook-.*?$",
+            "Entity-PriceCard.*?$",
+            "PriceCard-.*?$"
+          ]
+        },
+        "TableName": "PricingEntities"
+      },
+      {
+        "$type": "Sitecore.Commerce.Plugin.SQL.ListShardingPolicy, Sitecore.Commerce.Plugin.SQL",
+        "Expressions": {
+          "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
+          "$values": [
+            "^List-PriceItems.*?$",
+            "^List-PriceBooks.*?$",
+            "^List-PriceCard.*?$",
+            "Entity-PriceBook.*?$",
+            "Entity-PriceCard.*?$"
+          ]
+        },
+        "TableName": "PricingLists"
+      },
+      {
+        "$type": "Sitecore.Commerce.Plugin.SQL.ListShardingPolicy, Sitecore.Commerce.Plugin.SQL",
+        "Expressions": {
+          "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
+          "$values": [
+            "^List-JournalEntries.*?$",
+            "^List-DeletedCatalogItemsIndex.*?$",
+            "^List-DeletedCustomersIndex.*?$",
+            "^List-.*DeletedIndex(Master|Web).*$"
+          ]
+        },
+        "TableName": "CommerceLists"
+      },
+      {
+        "$type": "Sitecore.Commerce.Plugin.SQL.EntityShardingPolicy, Sitecore.Commerce.Plugin.SQL",
+        "Expressions": {
+          "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
+          "$values": [
+            "^Entity-Catalog.*?$",
+            "^Catalog-.*?$",
+            "^Entity-Category.*?$",
+            "^Category-.*?$",
+            "^Entity-SellableItem.*?$",
+            "^SellableItem-.*?$"
+          ]
+        },
+        "TableName": "CatalogEntities"
+      },
+      {
+        "$type": "Sitecore.Commerce.Plugin.SQL.ListShardingPolicy, Sitecore.Commerce.Plugin.SQL",
+        "Expressions": {
+          "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
+          "$values": [
+            "^List-CatalogItems.*?$",
+            "^List-Catalogs.*?$",
+            "^List-Categories.*?$",
+            "^List-SellableItems.*?$",
+            "^List-Categories.*?$",
+            "^List-SellableItems.*?$",
+            "^List-PurgeCatalogs.*?$",
+            "^List-PurgeCategories.*?$",
+            "Entity-Catalog.*?$",
+            "Entity-Category.*?$",
+            "Entity-SellableItem.*?$"
+          ]
+        },
+        "TableName": "CatalogLists"
+      },
+      {
+        "$type": "Sitecore.Commerce.Plugin.SQL.ListShardingPolicy, Sitecore.Commerce.Plugin.SQL",
+        "Expressions": {
+          "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
+          "$values": [
+            "^List-Entity-Workflow.*?$"
+          ]
+        },
+        "TableName": "WorkflowLists"
+      },
+      {
+        "$type": "Sitecore.Commerce.Plugin.SQL.EntityShardingPolicy, Sitecore.Commerce.Plugin.SQL",
+        "Expressions": {
+          "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
+          "$values": [
+            "^Entity-InventorySet.*?$",
+            "^InventorySet-.*?$",
+            "^Entity-InventoryInformation.*?$",
+            "^InventoryInformation-.*?$"
+          ]
+        },
+        "TableName": "InventoryEntities"
+      },
+      {
+        "$type": "Sitecore.Commerce.Plugin.SQL.ListShardingPolicy, Sitecore.Commerce.Plugin.SQL",
+        "Expressions": {
+          "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
+          "$values": [
+            "^List-InventorySets.*?$",
+            "^List-InventoryInformations.*?$",
+            "Entity-InventorySet.*?$",
+            "InventorySet-.*?$",
+            "Entity-InventoryInformation.*?$",
+            "InventoryInformation-.*?$"
+          ]
+        },
+        "TableName": "InventoryLists"
+      },
+      {
+        "$type": "Sitecore.Commerce.Plugin.SQL.EntityShardingPolicy, Sitecore.Commerce.Plugin.SQL",
+        "Expressions": {
+          "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
+          "$values": [
+            "Entity-Content.*?$",
+            "Content-.*?$",
+            "ContentItem-.*?$",
+            "ContentPath-.*?$"
+          ]
+        },
+        "TableName": "ContentEntities"
+      },
+      {
+        "$type": "Sitecore.Commerce.Plugin.SQL.ListShardingPolicy, Sitecore.Commerce.Plugin.SQL",
+        "Expressions": {
+          "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
+          "$values": [
+            "^List-ContentPath.*?$",
+            "^List-ContentItem.*?$",
+            "Entity-Content.*?$",
+            "ContentItem-.*?$",
+            "ContentPath-.*?$"
+          ]
+        },
+        "TableName": "ContentLists"
+      },
+      {
+        "$type": "Sitecore.Commerce.Plugin.SQL.EntityShardingPolicy, Sitecore.Commerce.Plugin.SQL",
+        "Expressions": {
+          "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
+          "$values": [
+            "Entity-RelationshipType.*?$",
+            "RelationshipType-.*?$",
+            "Entity-RelationshipDefinition.*?$",
+            "RelationshipDefinition-.*?$"
+          ]
+        },
+        "TableName": "RelationshipDefinitionEntities"
+      },
+      {
+        "$type": "Sitecore.Commerce.Plugin.SQL.ListShardingPolicy, Sitecore.Commerce.Plugin.SQL",
+        "Expressions": {
+          "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
+          "$values": [
+            "^List-RelationshipType.*?$",
+            "^List-CustomRelationshipDefinitions.*?$",
+            "^List-DefaultRelationshipDefinitions.*?$",
+            "Entity-RelationshipDefinition.*?$"
+          ]
+        },
+        "TableName": "RelationshipDefinitionLists"
+      },
+      {
+        "$type": "Sitecore.Commerce.Plugin.SQL.ListShardingPolicy, Sitecore.Commerce.Plugin.SQL",
+        "Expressions": {
+          "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
+          "$values": [
+            "^List-.*Catalog.*?$",
+            "^List-.*Category.*?$",
+            "^List-Catalog.*?$",
+            "^List-.*SellableItem.*?$",
+            "^List-.*SellableItem-.*?$",
+            "^List-PriceBookToCatalog.*?$",
+            "^List-PromotionBookToCatalog.*?$",
+            "^List-InventorySetToCatalog.*?$",
+            "^List-Relationship.*?$"
+          ]
+        },
+        "TableName": "RelationshipLists"
+      },
+      {
+        "$type": "Sitecore.Commerce.Plugin.SQL.EntityShardingPolicy, Sitecore.Commerce.Plugin.SQL",
+        "Expressions": {
+          "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
+          "$values": [
+            "^Entity-Customer.*?$",
+            "^Customer-.*?$"
+          ]
+        },
+        "TableName": "CustomersEntities"
+      },
+      {
+        "$type": "Sitecore.Commerce.Plugin.SQL.ListShardingPolicy, Sitecore.Commerce.Plugin.SQL",
+        "Expressions": {
+          "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
+          "$values": [
+            "^List-Customer.*?$",
+            "^Entity-Customer.*?$",
+            "^List-RecentCustomers.*?$",
+            "^Customer-.*?$"
+          ]
+        },
+        "TableName": "CustomersLists"
+      }
+    ]
+  }
+}

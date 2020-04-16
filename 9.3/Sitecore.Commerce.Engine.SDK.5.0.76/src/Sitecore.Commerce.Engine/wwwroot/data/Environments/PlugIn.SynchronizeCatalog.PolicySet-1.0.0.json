@@ -1,0 +1,20 @@
+{
+  "$type": "Sitecore.Commerce.Core.PolicySet, Sitecore.Commerce.Core",
+  "Id": "Entity-PolicySet-SynchronizeCatalogPolicySet",
+  "Version": 1,
+  "IsPersisted": false,
+  "Name": "SynchronizeCatalogPolicySet",
+  "Policies": {
+    "$type": "System.Collections.Generic.List`1[[Sitecore.Commerce.Core.Policy, Sitecore.Commerce.Core]], mscorlib",
+    "$values": [
+      {
+        "$type": "Sitecore.Services.Examples.SynchronizeCatalog.Policies.SynchronizeCatalogPolicy, Sitecore.Services.Examples.SynchronizeCatalog",
+        "SourceFolderLocation": "C:\\Git\\CatalogSynchronizer\\9.3\\Sitecore.Commerce.Engine.SDK.5.0.76\\src\\Sitecore.Commerce.Engine\\wwwroot\\data\\Catalogs\\Source",
+        "SuccessFolderLocation": "C:\\Git\\CatalogSynchronizer\\9.3\\Sitecore.Commerce.Engine.SDK.5.0.76\\src\\Sitecore.Commerce.Engine\\wwwroot\\data\\Catalogs\\Success",
+        "FailFolderLocation": "C:\\Git\\CatalogSynchronizer\\9.3\\Sitecore.Commerce.Engine.SDK.5.0.76\\src\\Sitecore.Commerce.Engine\\wwwroot\\data\\Catalogs\\Fail",
+        "SkipRelationships": false,
+        "ExcludeLogInResults": false
+      }
+    ]
+  }
+}

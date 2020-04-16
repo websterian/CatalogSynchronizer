@@ -1,0 +1,20 @@
+{
+  "$type": "Sitecore.Commerce.Core.PolicySet, Sitecore.Commerce.Core",
+  "Id": "Entity-PolicySet-SynchronizeCatalogMinionPolicySet",
+  "Version": 1,
+  "IsPersisted": false,
+  "Name": "SynchronizeCatalogMinionPolicySet",
+  "Policies": {
+    "$type": "System.Collections.Generic.List`1[[Sitecore.Commerce.Core.Policy, Sitecore.Commerce.Core]], mscorlib",
+    "$values": [
+      {
+        "$type": "Sitecore.Commerce.Core.MinionPolicy, Sitecore.Commerce.Core",
+        "WakeupInterval": "00.00:01:00",
+        "FullyQualifiedName": "Sitecore.Services.Examples.SynchronizeCatalog.Minions.SynchronizeCatalogMinion, Sitecore.Services.Examples.SynchronizeCatalog",
+        "ListsToWatch": [""],
+        "ItemsPerBatch": 10,
+        "SleepBetweenBatches": 500
+      }
+    ]
+  }
+}

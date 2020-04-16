@@ -1,0 +1,47 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <Description>Sitecore Commerce Sync Catalog</Description>
+    <VersionPrefix>1.0.0</VersionPrefix>
+    <Authors>Sitecore</Authors>
+    <TargetFramework>net471</TargetFramework>
+    <PackageTags>$(PackageTags);Commerce;Sample;Plugin</PackageTags>
+    <PackageIconUrl>http://www.sitecore.net/favicon.ico</PackageIconUrl>
+    <PackageProjectUrl>http://www.sitecore.net/</PackageProjectUrl>
+    <PackageLicenseUrl>http://www.sitecore.net/platform/pricing.aspx</PackageLicenseUrl>
+    <GenerateAssemblyTitleAttribute>false</GenerateAssemblyTitleAttribute>
+    <!-- Suppressing this warning because Commerce has strict dependency on Microsoft.OData.Core package. -->
+    <NoWarn>NU1605</NoWarn>
+    <AssemblyName>Sitecore.Services.Examples.SynchronizeCatalog</AssemblyName>
+    <RootNamespace>Sitecore.Services.Examples.SynchronizeCatalog</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Remove="PlugIn - Copy.SynchronizeCatalog.PolicySet-1.0.0.json" />
+    <None Remove="PlugIn.SynchronizeCatalog.PolicySet-1.0.0.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />
+    <PackageReference Include="Sitecore.Commerce.Plugin.Orders" Version="5.0.20" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="ConfigureSitecore.cs" />
+    <Content Include="PlugIn.SynchronizeCatalog.PolicySet-1.0.0.json">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net471' ">
+    <Reference Include="System.Transactions" />
+    <Reference Include="Microsoft.CSharp" />
+  </ItemGroup>
+</Project>

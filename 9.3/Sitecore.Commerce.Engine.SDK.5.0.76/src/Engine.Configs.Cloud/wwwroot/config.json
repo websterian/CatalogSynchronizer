@@ -1,0 +1,95 @@
+{
+  "AppSettings": {
+    "SiteTitle": "PlaceholderForSiteTitle",
+    "BootStrapFile": "Global",
+    "DeploymentId": "PlaceholderForDeploymentId",
+    "EnvironmentName": "PlaceholderForEnvironmentName",
+    "EncryptionProtectionType": "Machine",
+    "EncryptionCertificateHash": "Enter a valid certificate thumbprint for a PXF file. X-509 not supported yet",
+    "EncryptionSID": "Enter a valid SID for a domain registered user",
+    "EncryptionKeyStorageLocation": "D:\\home\\site\\wwwroot\\Encryption-Keys\\",
+    "SitecoreIdentityServerUrl": "PlaceHolderForSitecoreIdentityServerUrl",
+    "AllowedOrigins": [
+      "PlaceHolderForBizFxUrl",
+      "PlaceHolderForSxaStorefrontUrl"
+    ],
+    "AntiForgeryEnabled": "PlaceholderForAntiForgeryEnabled",
+    "CommerceServicesHostPostfix": "PlaceholderForCommerceServicesHostPostfix",
+    "UseHttpsInKestrel": false
+  },
+  "ApplicationInsights": {
+    "InstrumentationKey": "PlaceholderForApplicationInsightsKey"
+  },
+  "Logging": {
+    "IncludeScopes": false,
+    "LogLevel": {
+      "Default": "Warning",
+      "System": "Warning",
+      "Microsoft": "Warning"
+    },
+    "PipelineTraceLoggingEnabled": false,
+    "SerilogLoggingEnabled": true
+  },
+  "Serilog": {
+    "Using": [
+      "Serilog.Sinks.Literate",
+      "Serilog.Sinks.File",
+      "Serilog.Sinks.ApplicationInsights"
+    ],
+    "MinimumLevel": {
+      "Default": "Warning",
+      "Override": {
+        "Microsoft": "Warning",
+        "System": "Warning"
+      }
+    },
+    "WriteTo": [
+      {
+        "Name": "ApplicationInsights",
+        "Args": {
+          "restrictedToMinimumLevel": "Information",
+          "telemetryConverter":
+            "Serilog.Sinks.ApplicationInsights.Sinks.ApplicationInsights.TelemetryConverters.TraceTelemetryConverter, Serilog.Sinks.ApplicationInsights"
+        }
+      }
+    ],
+    "FileSizeLimitBytes": 100000000
+  },
+  "Caching": {
+    "Memory": {
+      "Enabled": false,
+      "CacheStoreName": "Commerce-Memory-Store"
+    },
+    "Redis": {
+      "Enabled": true,
+      "CacheStoreName": "Commerce-Redis-Store",
+      "Options": {
+        "Configuration": "PlaceholderForRedisConfiguration",
+        "InstanceName": "PlaceholderForRedisInstanceName"
+      }
+    }
+  },
+  "Compression": {
+    "Enabled": true,
+    "ResponseCompressionOptions": {
+      "EnableForHttps": true,
+      "MimeTypes": [
+        "text/plain",
+        "text/css",
+        "application/javascript",
+        "text/html",
+        "application/xml",
+        "text/xml",
+        "application/json",
+        "text/json",
+        "application/wasm"
+      ]
+    },
+    "GzipCompressionProviderOptions": {
+      "Level": "Fastest"
+    }
+  },
+  "CommerceConnector": {
+    "ClientId": "PlaceHolderForCommerceEngineConnectClientId"
+  }
+}

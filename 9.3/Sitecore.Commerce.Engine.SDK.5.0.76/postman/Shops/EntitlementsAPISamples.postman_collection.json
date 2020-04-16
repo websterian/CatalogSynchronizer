@@ -1,0 +1,904 @@
+{
+	"info": {
+		"_postman_id": "bdf42651-3186-40ee-b216-340655cb1635",
+		"name": "EntitlementsAPISamples",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "API",
+			"item": [
+				{
+					"name": "Get digital product",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "ShopName",
+								"value": "{{ShopName}}"
+							},
+							{
+								"key": "ShopperId",
+								"value": "{{ShopperId}}"
+							},
+							{
+								"key": "Language",
+								"value": "{{Language}}"
+							},
+							{
+								"key": "Currency",
+								"value": "{{Currency}}"
+							},
+							{
+								"key": "Environment",
+								"value": "{{Environment}}"
+							},
+							{
+								"key": "GeoLocation",
+								"value": "{{GeoLocation}}"
+							},
+							{
+								"key": "CustomerId",
+								"value": "{{CustomerId}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{SitecoreIdToken}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ServiceHost}}/{{ShopsApi}}/DigitalProducts('Entity-DigitalProduct-1e57ad24d1ae4ca1b682fd04bfb69a7a')?$expand=Components",
+							"host": [
+								"{{ServiceHost}}"
+							],
+							"path": [
+								"{{ShopsApi}}",
+								"DigitalProducts('Entity-DigitalProduct-1e57ad24d1ae4ca1b682fd04bfb69a7a')"
+							],
+							"query": [
+								{
+									"key": "$expand",
+									"value": "Components"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get digital product by UniqueId",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "ShopName",
+								"value": "{{ShopName}}"
+							},
+							{
+								"key": "ShopperId",
+								"value": "{{ShopperId}}"
+							},
+							{
+								"key": "Language",
+								"value": "{{Language}}"
+							},
+							{
+								"key": "Currency",
+								"value": "{{Currency}}"
+							},
+							{
+								"key": "Environment",
+								"value": "{{Environment}}"
+							},
+							{
+								"key": "GeoLocation",
+								"value": "{{GeoLocation}}"
+							},
+							{
+								"key": "CustomerId",
+								"value": "{{CustomerId}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{SitecoreIdToken}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ServiceHost}}/{{ShopsApi}}/DigitalProducts('2ce04fa7-b4f9-60f3-bfd2-70a83190951b')?$expand=Components",
+							"host": [
+								"{{ServiceHost}}"
+							],
+							"path": [
+								"{{ShopsApi}}",
+								"DigitalProducts('2ce04fa7-b4f9-60f3-bfd2-70a83190951b')"
+							],
+							"query": [
+								{
+									"key": "$expand",
+									"value": "Components"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get digital products",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "ShopName",
+								"value": "{{ShopName}}"
+							},
+							{
+								"key": "ShopperId",
+								"value": "{{ShopperId}}"
+							},
+							{
+								"key": "Language",
+								"value": "{{Language}}"
+							},
+							{
+								"key": "Currency",
+								"value": "{{Currency}}"
+							},
+							{
+								"key": "Environment",
+								"value": "{{Environment}}"
+							},
+							{
+								"key": "GeoLocation",
+								"value": "{{GeoLocation}}"
+							},
+							{
+								"key": "CustomerId",
+								"value": "{{CustomerId}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{SitecoreIdToken}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ServiceHost}}/{{ShopsApi}}/DigitalProducts",
+							"host": [
+								"{{ServiceHost}}"
+							],
+							"path": [
+								"{{ShopsApi}}",
+								"DigitalProducts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get gift card",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "ShopName",
+								"value": "{{ShopName}}"
+							},
+							{
+								"key": "ShopperId",
+								"value": "{{ShopperId}}"
+							},
+							{
+								"key": "Language",
+								"value": "{{Language}}"
+							},
+							{
+								"key": "Currency",
+								"value": "{{Currency}}"
+							},
+							{
+								"key": "Environment",
+								"value": "{{Environment}}"
+							},
+							{
+								"key": "GeoLocation",
+								"value": "{{GeoLocation}}"
+							},
+							{
+								"key": "CustomerId",
+								"value": "{{CustomerId}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{SitecoreIdToken}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ServiceHost}}/{{ShopsApi}}/GiftCards('Entity-GiftCard-GC100')?$expand=Components",
+							"host": [
+								"{{ServiceHost}}"
+							],
+							"path": [
+								"{{ShopsApi}}",
+								"GiftCards('Entity-GiftCard-GC100')"
+							],
+							"query": [
+								{
+									"key": "$expand",
+									"value": "Components"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get gift card by UniqueId",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "ShopName",
+								"value": "{{ShopName}}"
+							},
+							{
+								"key": "ShopperId",
+								"value": "{{ShopperId}}"
+							},
+							{
+								"key": "Language",
+								"value": "{{Language}}"
+							},
+							{
+								"key": "Currency",
+								"value": "{{Currency}}"
+							},
+							{
+								"key": "Environment",
+								"value": "{{Environment}}"
+							},
+							{
+								"key": "GeoLocation",
+								"value": "{{GeoLocation}}"
+							},
+							{
+								"key": "CustomerId",
+								"value": "{{CustomerId}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{SitecoreIdToken}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ServiceHost}}/{{ShopsApi}}/GiftCards('0624fe8a-2269-6ae8-a221-d160f176d507')?$expand=Components",
+							"host": [
+								"{{ServiceHost}}"
+							],
+							"path": [
+								"{{ShopsApi}}",
+								"GiftCards('0624fe8a-2269-6ae8-a221-d160f176d507')"
+							],
+							"query": [
+								{
+									"key": "$expand",
+									"value": "Components"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get gift cards",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "ShopName",
+								"value": "{{ShopName}}"
+							},
+							{
+								"key": "ShopperId",
+								"value": "{{ShopperId}}"
+							},
+							{
+								"key": "Language",
+								"value": "{{Language}}"
+							},
+							{
+								"key": "Currency",
+								"value": "{{Currency}}"
+							},
+							{
+								"key": "Environment",
+								"value": "{{Environment}}"
+							},
+							{
+								"key": "GeoLocation",
+								"value": "{{GeoLocation}}"
+							},
+							{
+								"key": "CustomerId",
+								"value": "{{CustomerId}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{SitecoreIdToken}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ServiceHost}}/{{ShopsApi}}/GiftCards",
+							"host": [
+								"{{ServiceHost}}"
+							],
+							"path": [
+								"{{ShopsApi}}",
+								"GiftCards"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get installation",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "ShopName",
+								"value": "{{ShopName}}"
+							},
+							{
+								"key": "ShopperId",
+								"value": "{{ShopperId}}"
+							},
+							{
+								"key": "Language",
+								"value": "{{Language}}"
+							},
+							{
+								"key": "Currency",
+								"value": "{{Currency}}"
+							},
+							{
+								"key": "Environment",
+								"value": "{{Environment}}"
+							},
+							{
+								"key": "GeoLocation",
+								"value": "{{GeoLocation}}"
+							},
+							{
+								"key": "CustomerId",
+								"value": "{{CustomerId}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{SitecoreIdToken}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ServiceHost}}/{{ShopsApi}}/Installations('Entity-Installation-0e35bee31a304cce9efb3b123362fa6e')?$expand=Components",
+							"host": [
+								"{{ServiceHost}}"
+							],
+							"path": [
+								"{{ShopsApi}}",
+								"Installations('Entity-Installation-0e35bee31a304cce9efb3b123362fa6e')"
+							],
+							"query": [
+								{
+									"key": "$expand",
+									"value": "Components"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get installation by UniqueId",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "ShopName",
+								"value": "{{ShopName}}"
+							},
+							{
+								"key": "ShopperId",
+								"value": "{{ShopperId}}"
+							},
+							{
+								"key": "Language",
+								"value": "{{Language}}"
+							},
+							{
+								"key": "Currency",
+								"value": "{{Currency}}"
+							},
+							{
+								"key": "Environment",
+								"value": "{{Environment}}"
+							},
+							{
+								"key": "GeoLocation",
+								"value": "{{GeoLocation}}"
+							},
+							{
+								"key": "CustomerId",
+								"value": "{{CustomerId}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{SitecoreIdToken}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ServiceHost}}/{{ShopsApi}}/Installations('6f16c9a5-368b-6ef0-bf54-49a562c52f9a')?$expand=Components",
+							"host": [
+								"{{ServiceHost}}"
+							],
+							"path": [
+								"{{ShopsApi}}",
+								"Installations('6f16c9a5-368b-6ef0-bf54-49a562c52f9a')"
+							],
+							"query": [
+								{
+									"key": "$expand",
+									"value": "Components"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get installations",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "ShopName",
+								"value": "{{ShopName}}"
+							},
+							{
+								"key": "ShopperId",
+								"value": "{{ShopperId}}"
+							},
+							{
+								"key": "Language",
+								"value": "{{Language}}"
+							},
+							{
+								"key": "Currency",
+								"value": "{{Currency}}"
+							},
+							{
+								"key": "Environment",
+								"value": "{{Environment}}"
+							},
+							{
+								"key": "GeoLocation",
+								"value": "{{GeoLocation}}"
+							},
+							{
+								"key": "CustomerId",
+								"value": "{{CustomerId}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{SitecoreIdToken}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ServiceHost}}/{{ShopsApi}}/Installations",
+							"host": [
+								"{{ServiceHost}}"
+							],
+							"path": [
+								"{{ShopsApi}}",
+								"Installations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get warranty",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "ShopName",
+								"value": "{{ShopName}}"
+							},
+							{
+								"key": "ShopperId",
+								"value": "{{ShopperId}}"
+							},
+							{
+								"key": "Language",
+								"value": "{{Language}}"
+							},
+							{
+								"key": "Currency",
+								"value": "{{Currency}}"
+							},
+							{
+								"key": "Environment",
+								"value": "{{Environment}}"
+							},
+							{
+								"key": "GeoLocation",
+								"value": "{{GeoLocation}}"
+							},
+							{
+								"key": "CustomerId",
+								"value": "{{CustomerId}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{SitecoreIdToken}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ServiceHost}}/{{ShopsApi}}/Warranties('Entity-Warranty-ac785c1092d94999ac2fb4199cb48b62')?$expand=Components",
+							"host": [
+								"{{ServiceHost}}"
+							],
+							"path": [
+								"{{ShopsApi}}",
+								"Warranties('Entity-Warranty-ac785c1092d94999ac2fb4199cb48b62')"
+							],
+							"query": [
+								{
+									"key": "$expand",
+									"value": "Components"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get warranty by UniqueId",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "ShopName",
+								"value": "{{ShopName}}"
+							},
+							{
+								"key": "ShopperId",
+								"value": "{{ShopperId}}"
+							},
+							{
+								"key": "Language",
+								"value": "{{Language}}"
+							},
+							{
+								"key": "Currency",
+								"value": "{{Currency}}"
+							},
+							{
+								"key": "Environment",
+								"value": "{{Environment}}"
+							},
+							{
+								"key": "GeoLocation",
+								"value": "{{GeoLocation}}"
+							},
+							{
+								"key": "CustomerId",
+								"value": "{{CustomerId}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{SitecoreIdToken}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ServiceHost}}/{{ShopsApi}}/Warranties('183a6286-a1b4-67e5-8661-cc1bca1c6022')?$expand=Components",
+							"host": [
+								"{{ServiceHost}}"
+							],
+							"path": [
+								"{{ShopsApi}}",
+								"Warranties('183a6286-a1b4-67e5-8661-cc1bca1c6022')"
+							],
+							"query": [
+								{
+									"key": "$expand",
+									"value": "Components"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get warranties",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "ShopName",
+								"value": "{{ShopName}}"
+							},
+							{
+								"key": "ShopperId",
+								"value": "{{ShopperId}}"
+							},
+							{
+								"key": "Language",
+								"value": "{{Language}}"
+							},
+							{
+								"key": "Currency",
+								"value": "{{Currency}}"
+							},
+							{
+								"key": "Environment",
+								"value": "{{Environment}}"
+							},
+							{
+								"key": "GeoLocation",
+								"value": "{{GeoLocation}}"
+							},
+							{
+								"key": "CustomerId",
+								"value": "{{CustomerId}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{SitecoreIdToken}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ServiceHost}}/{{ShopsApi}}/Warranties",
+							"host": [
+								"{{ServiceHost}}"
+							],
+							"path": [
+								"{{ShopsApi}}",
+								"Warranties"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Do Actions",
+			"item": [
+				{
+					"name": "Delete Entitlement",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "ShopName",
+								"value": "{{ShopName}}"
+							},
+							{
+								"key": "ShopperId",
+								"value": "{{ShopperId}}"
+							},
+							{
+								"key": "Language",
+								"value": "{{Language}}"
+							},
+							{
+								"key": "Currency",
+								"value": "{{Currency}}"
+							},
+							{
+								"key": "Environment",
+								"value": "{{Environment}}"
+							},
+							{
+								"key": "GeoLocation",
+								"value": "{{GeoLocation}}"
+							},
+							{
+								"key": "CustomerId",
+								"value": "{{CustomerId}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{SitecoreIdToken}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"@odata.context\": \"http://localhost:5000/api/$metadata#Sitecore.Commerce.EntityViews.EntityView\",\n  \"@odata.type\": \"#Sitecore.Commerce.EntityViews.EntityView\",\n  \"Name\": \"\",\n  \"Policies\": [],\n  \"EntityId\": \"{{OrderId}}\",\n  \"Action\": \"DeleteEntitlement\",\n  \"ItemId\": \"Entity-DigitalProduct-a3a438cc497048c3aa0a06fa6a305e71\",\n  \"Properties\": [\n   {\n      \"Name\": \"Version\",\n      \"Policies\": [],\n      \"DisplayName\": \"Version\",\n      \"Value\": \"1\",\n      \"IsHidden\": true,\n      \"OriginalType\": \"System.Int32\",\n      \"IsReadOnly\": true,\n      \"UiType\": \"\"\n    }\n  ],\n  \"ChildViews\": []\n}"
+						},
+						"url": {
+							"raw": "{{ServiceHost}}/{{ShopsApi}}/DoUxAction()",
+							"host": [
+								"{{ServiceHost}}"
+							],
+							"path": [
+								"{{ShopsApi}}",
+								"DoUxAction()"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Lists",
+			"item": [
+				{
+					"name": "Entitlements",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "ShopName",
+								"value": "{{ShopName}}"
+							},
+							{
+								"key": "ShopperId",
+								"value": "{{ShopperId}}"
+							},
+							{
+								"key": "Language",
+								"value": "{{Language}}"
+							},
+							{
+								"key": "Currency",
+								"value": "{{Currency}}"
+							},
+							{
+								"key": "Environment",
+								"value": "{{Environment}}"
+							},
+							{
+								"key": "GeoLocation",
+								"value": "{{GeoLocation}}"
+							},
+							{
+								"key": "CustomerId",
+								"value": "{{CustomerId}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{SitecoreIdToken}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ServiceHost}}/{{ShopsApi}}/GetList(id='Entitlements',type='Sitecore.Commerce.Plugin.Entitlements.Entitlement, Sitecore.Commerce.Plugin.Entitlements',skip=0,take=20)?$expand=Items",
+							"host": [
+								"{{ServiceHost}}"
+							],
+							"path": [
+								"{{ShopsApi}}",
+								"GetList(id='Entitlements',type='Sitecore.Commerce.Plugin.Entitlements.Entitlement, Sitecore.Commerce.Plugin.Entitlements',skip=0,take=20)"
+							],
+							"query": [
+								{
+									"key": "$expand",
+									"value": "Items"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

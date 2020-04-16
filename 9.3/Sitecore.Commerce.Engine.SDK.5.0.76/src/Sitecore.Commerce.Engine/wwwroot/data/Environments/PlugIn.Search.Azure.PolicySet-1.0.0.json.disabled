@@ -1,0 +1,559 @@
+{
+    "$type": "Sitecore.Commerce.Core.PolicySet, Sitecore.Commerce.Core",
+    "ArtifactStoreId": "1E72831D-50CE-43C2-A253-042BFB841CDF",
+    "Id": "Entity-PolicySet-AzureSearchPolicySet",
+    "Version": 1,
+    "IsPersisted": false,
+    "Name": "AzureSearchPolicySet",
+    "Policies": {
+      "$type": "System.Collections.Generic.List`1[[Sitecore.Commerce.Core.Policy, Sitecore.Commerce.Core]], mscorlib",
+      "$values": [
+        {
+          "$type": "Sitecore.Commerce.Plugin.Search.Azure.AzureSearchPolicy, Sitecore.Commerce.Plugin.Search.Azure",
+          "SearchServiceName": "PlaceholderForAzureSearchServiceName",
+          "SearchServiceAdminApiKey": "PlaceholderForAzureSearchServiceAdminApiKey",
+          "SearchServiceQueryApiKey": "PlaceholderForAzureSearchServiceQueryApiKey"
+        },
+        {
+          "$type": "Sitecore.Commerce.Plugin.Search.IndexablePolicy, Sitecore.Commerce.Plugin.Search",
+          "SearchScopeName": "sitecore-master-index",
+          "Properties": {
+            "azureuniqueid": {
+              "TypeName": "System.String",
+              "IsKey": true,
+              "IsSearchable": true,
+              "IsFilterable": true,
+              "IsSortable": true,
+              "IsFacetable": true,
+              "IsRetrievable": true
+            }
+          }
+        },
+        {
+          "$type": "Sitecore.Commerce.Plugin.Search.IndexablePolicy, Sitecore.Commerce.Plugin.Search",
+          "SearchScopeName": "sitecore-web-index",
+          "Properties": {
+            "azureuniqueid": {
+              "TypeName": "System.String",
+              "IsKey": true,
+              "IsSearchable": true,
+              "IsFilterable": true,
+              "IsSortable": true,
+              "IsFacetable": true,
+              "IsRetrievable": true
+            }
+          }
+        },
+        {
+          "$type": "Sitecore.Commerce.Plugin.Search.ItemIndexablePolicy, Sitecore.Commerce.Plugin.Search",
+          "IndexName": "sitecore_web_index",
+          "FieldTypeMappers": [
+            {
+              "TypeName": "string",
+              "Type": "System.String",
+              "NameFormat": "{0}",
+              "CultureFormat": "_t_{1}"
+            }
+          ],
+          "Fields": [
+            {
+              "$type": "Sitecore.Commerce.Plugin.Search.Azure.AzureIndexFieldConfiguration, Sitecore.Commerce.Plugin.Search.Azure",
+              "Name": "azureuniqueid",
+              "Type": "System.String",
+              "Handler": {
+                "$type": "Sitecore.Commerce.Plugin.Catalog.AzureUniqueIdFieldHandler, Sitecore.Commerce.Plugin.Catalog"
+              }
+            },
+            {
+              "$type": "Sitecore.Commerce.Plugin.Search.Azure.AzureIndexFieldConfiguration, Sitecore.Commerce.Plugin.Search.Azure",
+              "Name": "sxacontent",
+              "Type": "System.Collections.Generic.List`1[System.String]",
+              "Handler": {
+                "$type": "Sitecore.Commerce.Plugin.Catalog.SxaContentFieldHandler, Sitecore.Commerce.Plugin.Catalog"
+              }
+            },
+            {
+              "$type": "Sitecore.Commerce.Plugin.Search.Azure.AzureIndexFieldConfiguration, Sitecore.Commerce.Plugin.Search.Azure",
+              "Name": "_Template",
+              "Type": "System.String",
+              "Handler": {
+                "$type": "Sitecore.Commerce.Plugin.Catalog.TemplateFieldHandler, Sitecore.Commerce.Plugin.Catalog"
+              }
+            },
+            {
+              "$type": "Sitecore.Commerce.Plugin.Search.Azure.AzureIndexFieldConfiguration, Sitecore.Commerce.Plugin.Search.Azure",
+              "Name": "_TemplateName",
+              "Type": "System.String",
+              "Handler": {
+                "$type": "Sitecore.Commerce.Plugin.Catalog.TemplateNameFieldHandler, Sitecore.Commerce.Plugin.Catalog"
+              }
+            },
+            {
+              "$type": "Sitecore.Commerce.Plugin.Search.Azure.AzureIndexFieldConfiguration, Sitecore.Commerce.Plugin.Search.Azure",
+              "Name": "_Group",
+              "Type": "System.String",
+              "Handler": {
+                "$type": "Sitecore.Commerce.Plugin.Catalog.ItemIdFieldHandler, Sitecore.Commerce.Plugin.Catalog"
+              }
+            },
+            {
+              "$type": "Sitecore.Commerce.Plugin.Search.Azure.AzureIndexFieldConfiguration, Sitecore.Commerce.Plugin.Search.Azure",
+              "Name": "_UniqueId",
+              "Type": "System.String",
+              "Handler": {
+                "$type": "Sitecore.Commerce.Plugin.Catalog.UniqueIdFieldHandler, Sitecore.Commerce.Plugin.Catalog"
+              }
+            },
+            {
+              "$type": "Sitecore.Commerce.Plugin.Search.Azure.AzureIndexFieldConfiguration, Sitecore.Commerce.Plugin.Search.Azure",
+              "Name": "compat_prefix__parent_s",
+              "Type": "System.String",
+              "Handler": {
+                "$type": "Sitecore.Commerce.Plugin.Catalog.ParentFieldHandler, Sitecore.Commerce.Plugin.Catalog"
+              }
+            },
+            {
+              "$type": "Sitecore.Commerce.Plugin.Search.Azure.AzureIndexFieldConfiguration, Sitecore.Commerce.Plugin.Search.Azure",
+              "Name": "_DataSource",
+              "Type": "System.String",
+              "Handler": {
+                "$type": "Sitecore.Commerce.Plugin.Search.DataSourceFieldHandler, Sitecore.Commerce.Plugin.Search"
+              }
+            },
+            {
+              "$type": "Sitecore.Commerce.Plugin.Search.Azure.AzureIndexFieldConfiguration, Sitecore.Commerce.Plugin.Search.Azure",
+              "Name": "_IndexName",
+              "Type": "System.String",
+              "Handler": {
+                "$type": "Sitecore.Commerce.Plugin.Search.IndexNameFieldHandler, Sitecore.Commerce.Plugin.Search"
+              }
+            },
+            {
+              "$type": "Sitecore.Commerce.Plugin.Search.Azure.AzureIndexFieldConfiguration, Sitecore.Commerce.Plugin.Search.Azure",
+              "Name": "_LatestVersion",
+              "Type": "System.Boolean",
+              "Handler": {
+                "$type": "Sitecore.Commerce.Plugin.Search.LatestVersionFieldHandler, Sitecore.Commerce.Plugin.Search"
+              }
+            },
+            {
+              "$type": "Sitecore.Commerce.Plugin.Search.Azure.AzureIndexFieldConfiguration, Sitecore.Commerce.Plugin.Search.Azure",
+              "Name": "_Language",
+              "Type": "System.String",
+              "Handler": {
+                "$type": "Sitecore.Commerce.Plugin.Search.LanguageFieldHandler, Sitecore.Commerce.Plugin.Search"
+              }
+            },
+            {
+              "$type": "Sitecore.Commerce.Plugin.Search.Azure.AzureIndexFieldConfiguration, Sitecore.Commerce.Plugin.Search.Azure",
+              "Name": "_FullPath",
+              "Type": "System.String",
+              "Handler": {
+                "$type": "Sitecore.Commerce.Plugin.Catalog.FullPathFieldHandler, Sitecore.Commerce.Plugin.Catalog"
+              }
+            },
+            {
+              "$type": "Sitecore.Commerce.Plugin.Search.Azure.AzureIndexFieldConfiguration, Sitecore.Commerce.Plugin.Search.Azure",
+              "Name": "_Path",
+              "Type": "System.Collections.Generic.List`1[System.String]",
+              "Handler": {
+                "$type": "Sitecore.Commerce.Plugin.Catalog.PathFieldHandler, Sitecore.Commerce.Plugin.Catalog"
+              }
+            },
+            {
+              "$type": "Sitecore.Commerce.Plugin.Search.Azure.AzureIndexFieldConfiguration, Sitecore.Commerce.Plugin.Search.Azure",
+              "Name": "compat_prefix__name_s",
+              "Type": "System.String",
+              "ValueSource": {
+                "PropertyName": "FriendlyId",
+                "PropertyPath": ""
+              }
+            },
+            {
+              "$type": "Sitecore.Commerce.Plugin.Search.Azure.AzureIndexFieldConfiguration, Sitecore.Commerce.Plugin.Search.Azure",
+              "Name": "compat_prefix__displayname_s",
+              "Type": "System.String",
+              "ValueSource": {
+                "PropertyName": "DisplayName",
+                "PropertyPath": ""
+              }
+            },
+            {
+              "$type": "Sitecore.Commerce.Plugin.Search.Azure.AzureIndexFieldConfiguration, Sitecore.Commerce.Plugin.Search.Azure",
+              "Name": "content_1",
+              "Type": "System.String",
+              "ValueSource": {
+                "PropertyName": "DisplayName",
+                "PropertyPath": ""
+              }
+            },
+            {
+              "$type": "Sitecore.Commerce.Plugin.Search.Azure.AzureIndexFieldConfiguration, Sitecore.Commerce.Plugin.Search.Azure",
+              "Name": "HasChildren_b",
+              "Type": "System.Boolean",
+              "Handler": {
+                "$type": "Sitecore.Commerce.Plugin.Catalog.HasChildrenFieldHandler, Sitecore.Commerce.Plugin.Catalog"
+              }
+            },
+            {
+              "$type": "Sitecore.Commerce.Plugin.Search.Azure.AzureIndexFieldConfiguration, Sitecore.Commerce.Plugin.Search.Azure",
+              "Name": "Searchable",
+              "Type": "System.Boolean",
+              "Handler": {
+                "$type": "Sitecore.Commerce.Plugin.Catalog.SearchableFieldHandler, Sitecore.Commerce.Plugin.Catalog"
+              }
+            },
+            {
+              "$type": "Sitecore.Commerce.Plugin.Search.Azure.AzureIndexFieldConfiguration, Sitecore.Commerce.Plugin.Search.Azure",
+              "Name": "DisplayName",
+              "Type": "System.String",
+              "ValueSource": {
+                "PropertyName": "DisplayName",
+                "PropertyPath": ""
+              }
+            },
+            {
+              "$type": "Sitecore.Commerce.Plugin.Search.Azure.AzureIndexFieldConfiguration, Sitecore.Commerce.Plugin.Search.Azure",
+              "Name": "ProductId",
+              "Type": "System.String"
+            },
+            {
+              "$type": "Sitecore.Commerce.Plugin.Search.Azure.AzureIndexFieldConfiguration, Sitecore.Commerce.Plugin.Search.Azure",
+              "Name": "Brand",
+              "Type": "System.String"
+            },
+            {
+              "$type": "Sitecore.Commerce.Plugin.Search.Azure.AzureIndexFieldConfiguration, Sitecore.Commerce.Plugin.Search.Azure",
+              "Name": "Manufacturer",
+              "Type": "System.String"
+            },
+            {
+              "$type": "Sitecore.Commerce.Plugin.Search.Azure.AzureIndexFieldConfiguration, Sitecore.Commerce.Plugin.Search.Azure",
+              "Name": "TypeOfGood",
+              "Type": "System.String"
+            },
+            {
+              "$type": "Sitecore.Commerce.Plugin.Search.Azure.AzureIndexFieldConfiguration, Sitecore.Commerce.Plugin.Search.Azure",
+              "Name": "CommerceSearchItemType",
+              "Type": "System.String",
+              "Handler": {
+                "$type": "Sitecore.Commerce.Plugin.Search.ItemTypeFieldHandler, Sitecore.Commerce.Plugin.Search"
+              }
+            },
+            {
+              "$type": "Sitecore.Commerce.Plugin.Search.Azure.AzureIndexFieldConfiguration, Sitecore.Commerce.Plugin.Search.Azure",
+              "Name": "CatalogEntityId",
+              "Type": "System.String",
+              "ValueSource": {
+                "PropertyName": "Id",
+                "PropertyPath": ""
+              }
+            },
+            {
+              "$type": "Sitecore.Commerce.Plugin.Search.Azure.AzureIndexFieldConfiguration, Sitecore.Commerce.Plugin.Search.Azure",
+              "Name": "ChildrenCategoryList",
+              "Type": "System.Collections.Generic.List`1[System.String]",
+              "Handler": {
+                "$type": "Sitecore.Commerce.Plugin.Catalog.ChildrenCategoryListHandler, Sitecore.Commerce.Plugin.Catalog"
+              }
+            },
+            {
+              "$type": "Sitecore.Commerce.Plugin.Search.Azure.AzureIndexFieldConfiguration, Sitecore.Commerce.Plugin.Search.Azure",
+              "Name": "ParentCatalogList",
+              "Type": "System.Collections.Generic.List`1[System.String]",
+              "Handler": {
+                "$type": "Sitecore.Commerce.Plugin.Catalog.ParentCatalogListFieldHandler, Sitecore.Commerce.Plugin.Catalog"
+              }
+            },
+            {
+              "$type": "Sitecore.Commerce.Plugin.Search.Azure.AzureIndexFieldConfiguration, Sitecore.Commerce.Plugin.Search.Azure",
+              "Name": "ArtifactStoreId",
+              "Type": "System.String",
+              "Handler": {
+                "$type": "Sitecore.Commerce.Plugin.Search.ArtifactStoreIdFieldHandler, Sitecore.Commerce.Plugin.Search"
+              }
+            },
+            {
+              "$type": "Sitecore.Commerce.Plugin.Search.Azure.AzureIndexFieldConfiguration, Sitecore.Commerce.Plugin.Search.Azure",
+              "Name": "ExcludeFromWebsiteSearchResults",
+              "Type": "System.Boolean",
+              "Handler": {
+                "$type": "Sitecore.Commerce.Plugin.Catalog.ExcludeFromSearchResultsFieldHandler, Sitecore.Commerce.Plugin.Catalog"
+              }
+            },
+            {
+              "$type": "Sitecore.Commerce.Plugin.Search.Azure.AzureIndexFieldConfiguration, Sitecore.Commerce.Plugin.Search.Azure",
+              "Name": "smallcreateddate_2",
+              "Type": "System.Boolean",
+              "Handler": {
+                "$type": "Sitecore.Commerce.Plugin.Catalog.CreatedDateFieldHandler, Sitecore.Commerce.Plugin.Catalog"
+              }
+            },
+            {
+              "$type": "Sitecore.Commerce.Plugin.Search.Azure.AzureIndexFieldConfiguration, Sitecore.Commerce.Plugin.Search.Azure",
+              "Name": "smallupdateddate_2",
+              "Type": "System.Boolean",
+              "Handler": {
+                "$type": "Sitecore.Commerce.Plugin.Catalog.UpdatedDateFieldHandler, Sitecore.Commerce.Plugin.Catalog"
+              }
+            }
+          ]
+        },
+        {
+          "$type": "Sitecore.Commerce.Plugin.Search.ItemIndexablePolicy, Sitecore.Commerce.Plugin.Search",
+          "IndexName": "sitecore_master_index",
+          "FieldTypeMappers": [
+            {
+              "TypeName": "string",
+              "Type": "System.String",
+              "NameFormat": "{0}",
+              "CultureFormat": "_{1}"
+            }
+          ],
+          "Fields": [
+            {
+              "$type": "Sitecore.Commerce.Plugin.Search.Azure.AzureIndexFieldConfiguration, Sitecore.Commerce.Plugin.Search.Azure",
+              "Name": "azureuniqueid",
+              "Type": "System.String",
+              "Handler": {
+                "$type": "Sitecore.Commerce.Plugin.Catalog.AzureUniqueIdFieldHandler, Sitecore.Commerce.Plugin.Catalog"
+              }
+            },
+            {
+              "$type": "Sitecore.Commerce.Plugin.Search.Azure.AzureIndexFieldConfiguration, Sitecore.Commerce.Plugin.Search.Azure",
+              "Name": "sxacontent",
+              "Type": "System.Collections.Generic.List`1[System.String]",
+              "Handler": {
+                "$type": "Sitecore.Commerce.Plugin.Catalog.SxaContentFieldHandler, Sitecore.Commerce.Plugin.Catalog"
+              }
+            },
+            {
+              "$type": "Sitecore.Commerce.Plugin.Search.Azure.AzureIndexFieldConfiguration, Sitecore.Commerce.Plugin.Search.Azure",
+              "Name": "_Template",
+              "Type": "System.String",
+              "Handler": {
+                "$type": "Sitecore.Commerce.Plugin.Catalog.TemplateFieldHandler, Sitecore.Commerce.Plugin.Catalog"
+              }
+            },
+            {
+              "$type": "Sitecore.Commerce.Plugin.Search.Azure.AzureIndexFieldConfiguration, Sitecore.Commerce.Plugin.Search.Azure",
+              "Name": "_TemplateName",
+              "Type": "System.String",
+              "Handler": {
+                "$type": "Sitecore.Commerce.Plugin.Catalog.TemplateNameFieldHandler, Sitecore.Commerce.Plugin.Catalog"
+              }
+            },
+            {
+              "$type": "Sitecore.Commerce.Plugin.Search.Azure.AzureIndexFieldConfiguration, Sitecore.Commerce.Plugin.Search.Azure",
+              "Name": "_Group",
+              "Type": "System.String",
+              "Handler": {
+                "$type": "Sitecore.Commerce.Plugin.Catalog.ItemIdFieldHandler, Sitecore.Commerce.Plugin.Catalog"
+              }
+            },
+            {
+              "$type": "Sitecore.Commerce.Plugin.Search.Azure.AzureIndexFieldConfiguration, Sitecore.Commerce.Plugin.Search.Azure",
+              "Name": "_UniqueId",
+              "Type": "System.String",
+              "Handler": {
+                "$type": "Sitecore.Commerce.Plugin.Catalog.UniqueIdFieldHandler, Sitecore.Commerce.Plugin.Catalog"
+              }
+            },
+            {
+              "$type": "Sitecore.Commerce.Plugin.Search.Azure.AzureIndexFieldConfiguration, Sitecore.Commerce.Plugin.Search.Azure",
+              "Name": "compat_prefix__parent_s",
+              "Type": "System.String",
+              "Handler": {
+                "$type": "Sitecore.Commerce.Plugin.Catalog.ParentFieldHandler, Sitecore.Commerce.Plugin.Catalog"
+              }
+            },
+            {
+              "$type": "Sitecore.Commerce.Plugin.Search.Azure.AzureIndexFieldConfiguration, Sitecore.Commerce.Plugin.Search.Azure",
+              "Name": "_DataSource",
+              "Type": "System.String",
+              "Handler": {
+                "$type": "Sitecore.Commerce.Plugin.Search.DataSourceFieldHandler, Sitecore.Commerce.Plugin.Search"
+              }
+            },
+            {
+              "$type": "Sitecore.Commerce.Plugin.Search.Azure.AzureIndexFieldConfiguration, Sitecore.Commerce.Plugin.Search.Azure",
+              "Name": "_IndexName",
+              "Type": "System.String",
+              "Handler": {
+                "$type": "Sitecore.Commerce.Plugin.Search.IndexNameFieldHandler, Sitecore.Commerce.Plugin.Search"
+              }
+            },
+            {
+              "$type": "Sitecore.Commerce.Plugin.Search.Azure.AzureIndexFieldConfiguration, Sitecore.Commerce.Plugin.Search.Azure",
+              "Name": "_LatestVersion",
+              "Type": "System.Boolean",
+              "Handler": {
+                "$type": "Sitecore.Commerce.Plugin.Search.LatestVersionFieldHandler, Sitecore.Commerce.Plugin.Search"
+              }
+            },
+            {
+              "$type": "Sitecore.Commerce.Plugin.Search.Azure.AzureIndexFieldConfiguration, Sitecore.Commerce.Plugin.Search.Azure",
+              "Name": "_Language",
+              "Type": "System.String",
+              "Handler": {
+                "$type": "Sitecore.Commerce.Plugin.Search.LanguageFieldHandler, Sitecore.Commerce.Plugin.Search"
+              }
+            },
+            {
+              "$type": "Sitecore.Commerce.Plugin.Search.Azure.AzureIndexFieldConfiguration, Sitecore.Commerce.Plugin.Search.Azure",
+              "Name": "_FullPath",
+              "Type": "System.String",
+              "Handler": {
+                "$type": "Sitecore.Commerce.Plugin.Catalog.FullPathFieldHandler, Sitecore.Commerce.Plugin.Catalog"
+              }
+            },
+            {
+              "$type": "Sitecore.Commerce.Plugin.Search.Azure.AzureIndexFieldConfiguration, Sitecore.Commerce.Plugin.Search.Azure",
+              "Name": "_Path",
+              "Type": "System.Collections.Generic.List`1[System.String]",
+              "Handler": {
+                "$type": "Sitecore.Commerce.Plugin.Catalog.PathFieldHandler, Sitecore.Commerce.Plugin.Catalog"
+              }
+            },
+            {
+              "$type": "Sitecore.Commerce.Plugin.Search.Azure.AzureIndexFieldConfiguration, Sitecore.Commerce.Plugin.Search.Azure",
+              "Name": "compat_prefix__name_s",
+              "Type": "System.String",
+              "ValueSource": {
+                "PropertyName": "FriendlyId",
+                "PropertyPath": ""
+              }
+            },
+            {
+              "$type": "Sitecore.Commerce.Plugin.Search.Azure.AzureIndexFieldConfiguration, Sitecore.Commerce.Plugin.Search.Azure",
+              "Name": "compat_prefix__displayname_s",
+              "Type": "System.String",
+              "ValueSource": {
+                "PropertyName": "DisplayName",
+                "PropertyPath": ""
+              }
+            },
+            {
+              "$type": "Sitecore.Commerce.Plugin.Search.Azure.AzureIndexFieldConfiguration, Sitecore.Commerce.Plugin.Search.Azure",
+              "Name": "content_1",
+              "Type": "System.String",
+              "ValueSource": {
+                "PropertyName": "DisplayName",
+                "PropertyPath": ""
+              }
+            },
+            {
+              "$type": "Sitecore.Commerce.Plugin.Search.Azure.AzureIndexFieldConfiguration, Sitecore.Commerce.Plugin.Search.Azure",
+              "Name": "HasChildren_b",
+              "Type": "System.Boolean",
+              "Handler": {
+                "$type": "Sitecore.Commerce.Plugin.Catalog.HasChildrenFieldHandler, Sitecore.Commerce.Plugin.Catalog"
+              }
+            },
+            {
+              "$type": "Sitecore.Commerce.Plugin.Search.Azure.AzureIndexFieldConfiguration, Sitecore.Commerce.Plugin.Search.Azure",
+              "Name": "Searchable",
+              "Type": "System.Boolean",
+              "Handler": {
+                "$type": "Sitecore.Commerce.Plugin.Catalog.SearchableFieldHandler, Sitecore.Commerce.Plugin.Catalog"
+              }
+            },
+            {
+              "$type": "Sitecore.Commerce.Plugin.Search.Azure.AzureIndexFieldConfiguration, Sitecore.Commerce.Plugin.Search.Azure",
+              "Name": "DisplayName",
+              "Type": "System.String",
+              "ValueSource": {
+                "PropertyName": "DisplayName",
+                "PropertyPath": ""
+              }
+            },
+            {
+              "$type": "Sitecore.Commerce.Plugin.Search.Azure.AzureIndexFieldConfiguration, Sitecore.Commerce.Plugin.Search.Azure",
+              "Name": "ProductId",
+              "Type": "System.String"
+            },
+            {
+              "$type": "Sitecore.Commerce.Plugin.Search.Azure.AzureIndexFieldConfiguration, Sitecore.Commerce.Plugin.Search.Azure",
+              "Name": "Brand",
+              "Type": "System.String"
+            },
+            {
+              "$type": "Sitecore.Commerce.Plugin.Search.Azure.AzureIndexFieldConfiguration, Sitecore.Commerce.Plugin.Search.Azure",
+              "Name": "Manufacturer",
+              "Type": "System.String"
+            },
+            {
+              "$type": "Sitecore.Commerce.Plugin.Search.Azure.AzureIndexFieldConfiguration, Sitecore.Commerce.Plugin.Search.Azure",
+              "Name": "TypeOfGood",
+              "Type": "System.String"
+            },
+            {
+              "$type": "Sitecore.Commerce.Plugin.Search.Azure.AzureIndexFieldConfiguration, Sitecore.Commerce.Plugin.Search.Azure",
+              "Name": "CommerceSearchItemType",
+              "Type": "System.String",
+              "Handler": {
+                "$type": "Sitecore.Commerce.Plugin.Search.ItemTypeFieldHandler, Sitecore.Commerce.Plugin.Search"
+              }
+            },
+            {
+              "$type": "Sitecore.Commerce.Plugin.Search.Azure.AzureIndexFieldConfiguration, Sitecore.Commerce.Plugin.Search.Azure",
+              "Name": "CatalogEntityId",
+              "Type": "System.String",
+              "ValueSource": {
+                "PropertyName": "Id",
+                "PropertyPath": ""
+              }
+            },
+            {
+              "$type": "Sitecore.Commerce.Plugin.Search.Azure.AzureIndexFieldConfiguration, Sitecore.Commerce.Plugin.Search.Azure",
+              "Name": "ChildrenCategoryList",
+              "Type": "System.Collections.Generic.List`1[System.String]",
+              "Handler": {
+                "$type": "Sitecore.Commerce.Plugin.Catalog.ChildrenCategoryListHandler, Sitecore.Commerce.Plugin.Catalog"
+              }
+            },
+            {
+              "$type": "Sitecore.Commerce.Plugin.Search.Azure.AzureIndexFieldConfiguration, Sitecore.Commerce.Plugin.Search.Azure",
+              "Name": "ParentCatalogList",
+              "Type": "System.Collections.Generic.List`1[System.String]",
+              "Handler": {
+                "$type": "Sitecore.Commerce.Plugin.Catalog.ParentCatalogListFieldHandler, Sitecore.Commerce.Plugin.Catalog"
+              }
+            },
+            {
+              "$type": "Sitecore.Commerce.Plugin.Search.Azure.AzureIndexFieldConfiguration, Sitecore.Commerce.Plugin.Search.Azure",
+              "Name": "ArtifactStoreId",
+              "Type": "System.String",
+              "Handler": {
+                "$type": "Sitecore.Commerce.Plugin.Search.ArtifactStoreIdFieldHandler, Sitecore.Commerce.Plugin.Search"
+              }
+            },
+            {
+              "$type": "Sitecore.Commerce.Plugin.Search.Azure.AzureIndexFieldConfiguration, Sitecore.Commerce.Plugin.Search.Azure",
+              "Name": "ExcludeFromWebsiteSearchResults",
+              "Type": "System.Boolean",
+              "Handler": {
+                "$type": "Sitecore.Commerce.Plugin.Catalog.ExcludeFromSearchResultsFieldHandler, Sitecore.Commerce.Plugin.Catalog"
+              }
+            },
+            {
+              "$type": "Sitecore.Commerce.Plugin.Search.Azure.AzureIndexFieldConfiguration, Sitecore.Commerce.Plugin.Search.Azure",
+              "Name": "smallcreateddate_2",
+              "Type": "System.Boolean",
+              "Handler": {
+                "$type": "Sitecore.Commerce.Plugin.Catalog.CreatedDateFieldHandler, Sitecore.Commerce.Plugin.Catalog"
+              }
+            },
+            {
+              "$type": "Sitecore.Commerce.Plugin.Search.Azure.AzureIndexFieldConfiguration, Sitecore.Commerce.Plugin.Search.Azure",
+              "Name": "smallupdateddate_2",
+              "Type": "System.Boolean",
+              "Handler": {
+                "$type": "Sitecore.Commerce.Plugin.Catalog.UpdatedDateFieldHandler, Sitecore.Commerce.Plugin.Catalog"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
