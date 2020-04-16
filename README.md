@@ -1,4 +1,4 @@
-# CatalogSynchronizer
+# Catalog Synchronizer
 Establishes an integration pattern for synchronizing Sitecore commerce catalogs, categories and products
 ## Purpose
 
