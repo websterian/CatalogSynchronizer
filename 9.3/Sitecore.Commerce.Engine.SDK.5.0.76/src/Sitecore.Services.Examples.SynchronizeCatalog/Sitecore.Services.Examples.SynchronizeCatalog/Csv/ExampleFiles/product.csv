@@ -1,0 +1,4 @@
+Operation,ParentId,ParentType,Id,Description,Name,DisplayName,Brand,Manufacturer,TypeOfGood,ListPrice,ListPriceCurrency,Tags
+CreateOrUpdate,SHOECATALOG001|OUTDOOR001,Category,001,Hiking shoes,Hiking shoes,Really nice hiking boots,Hiking Inc.,Hiking shoe company,Shoes,99,hello,Hiking|Outdoors
+CreateOrUpdate,SHOECATALOG001|FOOTBALL001,Category,002,Football boots,Football boots,Awesome football boots changed,Footie Inc.,Big boots company,Shoes,100,USD,Sports|Footabll
+CreateOrUpdate,SHOECATALOG001|OUTDOOR001,Category,003,Hiking shoes,Hiking shoes,Really nice hiking boots,Footie Inc.,Big boots company,Shoes,101,USD,Hiking|Outdoors

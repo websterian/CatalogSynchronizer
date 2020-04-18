@@ -1,0 +1,11 @@
+Operation,ParentId,ParentType,Id,Name,DisplayName,Description,ListPrice,ListPriceCurrency,Color,Size,Style
+CreateOrUpdate,001,Product,BLUE_11,Football boots Blue Size 11,Awesome football boots Blue Size 11,"Football of the highest quality, sure to score goals with these blue boots.",333,USD,Blue,11,
+CreateOrUpdate,001,Product,RED_12,Football boots Red Size 12,Awesome football boots Red Size 12,"Football of the highest quality, sure to score goals with these red boots.",444,USD,Red,12,
+CreateOrUpdate,001,Product,GREEN_9,Football boots Green Size 9,Awesome football boots Green Size 9,"Football of the highest quality, sure to score goals with these green boots.",444,USD,Green,9,
+CreateOrUpdate,002,Product,BLUE_12,Football boots Blue Size 12,Awesome football boots Blue Size 12,"Football of the highest quality, sure to score goals with these blue boots.",333,USD,Blue,11,
+CreateOrUpdate,002,Product,RED_13,Football boots Red Size 13,Awesome football boots Red Size 13,"Football of the highest quality, sure to score goals with these red boots.",444,USD,Red,12,
+CreateOrUpdate,002,Product,GREEN_10,Football boots Green Size 10,Awesome football boots Green Size 10,"Football of the highest quality, sure to score goals with these green boots.",444,USD,Green,9,
+CreateOrUpdate,003,Product,BLUE_13,Football boots Blue Size 13,Awesome football boots Blue Size 13,"Football of the highest quality, sure to score goals with these blue boots.",333,USD,Blue,11,
+CreateOrUpdate,003,Product,RED_14,Football boots Red Size 14,Awesome football boots Red Size 14,"Football of the highest quality, sure to score goals with these red boots.",444,USD,Red,12,
+CreateOrUpdate,003,Product,GREEN_11,Football boots Green Size 11,Awesome football boots Green Size 11,"Football of the highest quality, sure to score goals with these green boots.",444,USD,Green,9,
+CreateOrUpdate,004,Product,BLUE_14,Football boots Blue Size 14,Awesome football boots Blue Size 14,"Football of the highest quality, sure to score goals with these blue boots.",333,USD,Blue,11,

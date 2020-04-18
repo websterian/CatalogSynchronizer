@@ -5,7 +5,6 @@ namespace Sitecore.Services.Examples.SynchronizeCatalog.Models
 {
     public abstract class SynchronizeEntityBase
     {
-        public string EntityType { get; set; }
         public string ParentId { get; set; }
         public string SplitCatalogId => ParentId.Split('|').First();
 

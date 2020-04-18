@@ -10,6 +10,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\data\Catalogs\Source\product.csv" />
+    <Content Remove="wwwroot\data\Catalogs\Source\variant.csv" />
     <Content Remove="wwwroot\data\Environments\PlugIn.SynchronizeCatalogMinion.PolicySet-1.0.0.json" />
   </ItemGroup>
 
@@ -61,8 +63,8 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\data\Catalogs\Fail\" />
-    <Folder Include="wwwroot\data\Catalogs\Success\" />
     <Folder Include="wwwroot\data\Catalogs\Source\" />
+    <Folder Include="wwwroot\data\Catalogs\Success\" />
   </ItemGroup>
 
   <ItemGroup>

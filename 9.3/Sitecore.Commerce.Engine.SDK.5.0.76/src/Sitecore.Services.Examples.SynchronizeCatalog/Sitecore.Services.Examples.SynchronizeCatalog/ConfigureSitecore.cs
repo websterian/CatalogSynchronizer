@@ -8,6 +8,7 @@
 // --------------------------------------------------------------------------------------------------------------------
 
 using System.Reflection;
+using AutoMapper;
 using Microsoft.Extensions.DependencyInjection;
 using Sitecore.Commerce.Core;
 using Sitecore.Framework.Configuration;
@@ -41,6 +42,8 @@ namespace Sitecore.Services.Examples.SynchronizeCatalog
                     configure => { configure.Add<SynchronizeCatalogBlock>(); })
                 .ConfigurePipeline<IConfigureServiceApiPipeline>(configure => configure.Add<ConfigureServiceApiBlock>())
             );
+
+            services.AddAutoMapper(assembly);
         }
     }
 }

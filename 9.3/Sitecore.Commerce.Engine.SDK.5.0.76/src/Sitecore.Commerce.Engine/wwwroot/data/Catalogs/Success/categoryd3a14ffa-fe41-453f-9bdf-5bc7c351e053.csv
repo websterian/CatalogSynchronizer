@@ -1,0 +1,4 @@
+Operation,ParentId,ParentType,Id,DisplayName,Name,Description
+CreateOrUpdate,SHOECATALOG001,Catalog,OUTDOOR001,Outdoors,Outdoors,Contains all the products and sub categories for outdoors
+CreateOrUpdate,SHOECATALOG001,Catalog,SPORTS001,Sports,Sports,Contains all the products and sub categories for sports
+CreateOrUpdate,SHOECATALOG001|SPORTS001,Category,FOOTBALL001,Football,Football,Contains all the products and sub categories for football
