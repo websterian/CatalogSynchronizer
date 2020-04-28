@@ -8,31 +8,36 @@ using Sitecore.Commerce.Plugin.ManagedLists;
 using Sitecore.Services.Examples.SynchronizeCatalog.Models;
 using Sitecore.Services.Examples.SynchronizeCatalog.Pipelines.Arguments;
 
-namespace Sitecore.Services.Examples.SynchronizeCatalog
+namespace Sitecore.Services.Examples.SynchronizeCatalog.Framework
 {
-    public class CatalogSynchronizer
+    public abstract class CatalogSynchronizerBase
     {
         private SynchronizeCatalogResult _synchronizeCatalogResult;
         private readonly CommerceCommander _commerceCommander;
         private SynchronizeCatalogArgument _synchronizeCatalogArgument;
+        private readonly CommercePipelineExecutionContext _context;
 
-        public CatalogSynchronizer(CommerceCommander commerceCommander)
+        protected CatalogSynchronizerBase(CommerceCommander commerceCommander, CommercePipelineExecutionContext context)
         {
             _commerceCommander = commerceCommander;
+            _context = context;
         }
 
-        public async Task<SynchronizeCatalogResult> Run(SynchronizeCatalogArgument arg, CommercePipelineExecutionContext context)
+        public abstract void SetProductCustomFields(Product sourceProduct, SellableItem destinationProduct);
+        public abstract void SetVariantCustomFields(Variant sourceVariant, ItemVariationComponent destinationVariant);
+
+        public async Task<SynchronizeCatalogResult> Run(SynchronizeCatalogArgument arg)
         {
             _synchronizeCatalogArgument = arg;
             _synchronizeCatalogResult = new SynchronizeCatalogResult();
             Log("Starting Simple Catalog Import Service Run");
 
-            await ImportProductsAndVariants(context).ConfigureAwait(false);
-            await ImportCatalogs(context).ConfigureAwait(false);
-            await ImportCategories(context).ConfigureAwait(false);
+            await ImportProductsAndVariants().ConfigureAwait(false);
+            await ImportCatalogs().ConfigureAwait(false);
+            await ImportCategories().ConfigureAwait(false);
 
             if(arg.Options.SkipRelationships == false)
-                await ImportRelationships(context).ConfigureAwait(false);
+                await ImportRelationships().ConfigureAwait(false);
 
             Log("Ending Simple Catalog Import Service Run");
             return _synchronizeCatalogResult;
@@ -47,7 +52,7 @@ namespace Sitecore.Services.Examples.SynchronizeCatalog
             _synchronizeCatalogResult.LogMessages.Add(message);
         }
 
-        private async Task ImportRelationships(CommercePipelineExecutionContext context)
+        private async Task ImportRelationships()
         {
             foreach (var sourceCategory in _synchronizeCatalogArgument.Categories.FindAll(x =>
                 x.Operation.ToLower() != "delete" && 
@@ -58,7 +63,7 @@ namespace Sitecore.Services.Examples.SynchronizeCatalog
                             new CatalogReferenceArgument(
                                 sourceCategory.FullCatalogId,
                                 sourceCategory.FullParentId, 
-                                sourceCategory.FullIdWithCatalog), context.CommerceContext.PipelineContextOptions)
+                                sourceCategory.FullIdWithCatalog), _context.CommerceContext.PipelineContextOptions)
                     .ConfigureAwait(false);
             }
 
@@ -71,36 +76,36 @@ namespace Sitecore.Services.Examples.SynchronizeCatalog
                         new CatalogReferenceArgument(
                             sourceProduct.FullCatalogId,
                             sourceProduct.FullParentId,
-                            sourceProduct.FullId), context.CommerceContext.PipelineContextOptions)
+                            sourceProduct.FullId), _context.CommerceContext.PipelineContextOptions)
                     .ConfigureAwait(false);
             }
         }
 
-        private async Task ImportCatalogs(CommercePipelineExecutionContext context)
+        private async Task ImportCatalogs()
         {
             var updates = new List<CommerceEntity>();
             var adds = new List<CommerceEntity>();
 
-            await ProcessCatalogs(context, updates, adds).ConfigureAwait(false);
+            await ProcessCatalogs(updates, adds).ConfigureAwait(false);
 
-            await PersistUpdates(context, updates).ConfigureAwait(false);
-            await PersistAdds(context, adds).ConfigureAwait(false);
+            await PersistUpdates(updates).ConfigureAwait(false);
+            await PersistAdds(adds).ConfigureAwait(false);
 
             _synchronizeCatalogResult.NumberOfCatalogsCreated = adds.Count();
             _synchronizeCatalogResult.NumberOfCatalogsUpdated = updates.Count();
-            //Catalog are deleted they are just marked for purging and the minion processes it
+            //Catalog aren't deleted they are just marked for purging and the minion processes it
             _synchronizeCatalogResult.NumberOfCatalogsMarkedForPurging = _synchronizeCatalogArgument.Catalogs.Count(x => x.Operation.ToLower() == "delete");
         }
 
-        private async Task ImportCategories(CommercePipelineExecutionContext context)
+        private async Task ImportCategories()
         {
             var updates = new List<CommerceEntity>();
             var adds = new List<CommerceEntity>();
 
-            await ProcessCategories( context, updates, adds).ConfigureAwait(false);
+            await ProcessCategories(updates, adds).ConfigureAwait(false);
 
-            await PersistUpdates(context, updates).ConfigureAwait(false);
-            await PersistAdds(context, adds).ConfigureAwait(false);
+            await PersistUpdates(updates).ConfigureAwait(false);
+            await PersistAdds(adds).ConfigureAwait(false);
 
             _synchronizeCatalogResult.NumberOfCategoriesCreated = adds.Count();
             _synchronizeCatalogResult.NumberOfCategoriesUpdated = updates.Count();
@@ -109,24 +114,24 @@ namespace Sitecore.Services.Examples.SynchronizeCatalog
             _synchronizeCatalogResult.NumberOfCategoriesMarkedforPurging = _synchronizeCatalogArgument.Categories.Count(x => x.Operation.ToLower() == "delete");
         }
 
-        private async Task ImportProductsAndVariants(CommercePipelineExecutionContext context)
+        private async Task ImportProductsAndVariants()
         {
             var updates = new List<CommerceEntity>();
             var adds = new List<CommerceEntity>();
             var deletes = new List<CommerceEntity>();
 
-            await ProcessSellableItemsAndVariants(context, deletes, updates, adds).ConfigureAwait(false);
+            await ProcessSellableItemsAndVariants(deletes, updates, adds).ConfigureAwait(false);
 
-            await PersistUpdates(context, updates).ConfigureAwait(false);
-            await PersistAdds(context, adds).ConfigureAwait(false);
-            await PersistDeletes(context, deletes).ConfigureAwait(false);
+            await PersistUpdates(updates).ConfigureAwait(false);
+            await PersistAdds(adds).ConfigureAwait(false);
+            await PersistDeletes(deletes).ConfigureAwait(false);
 
             _synchronizeCatalogResult.NumberOfProductsCreated = adds.Count();
             _synchronizeCatalogResult.NumberOfProductsUpdated = updates.Count();
             _synchronizeCatalogResult.NumberOfProductsDeleted = deletes.Count();
         }
 
-        private async Task PersistAdds(CommercePipelineExecutionContext context, List<CommerceEntity> adds)
+        private async Task PersistAdds(List<CommerceEntity> adds)
         {
             if (adds.Any())
             {
@@ -138,12 +143,12 @@ namespace Sitecore.Services.Examples.SynchronizeCatalog
                 });
 
                 var items = new PersistEntitiesArgument(addArguments);
-                await _commerceCommander.Pipeline<IAddEntitiesPipeline>().Run(items, context).ConfigureAwait(false);
+                await _commerceCommander.Pipeline<IAddEntitiesPipeline>().Run(items, _context).ConfigureAwait(false);
                 Log($"Ending {adds.First().GetType().Name} adds");
             }
         }
 
-        private async Task PersistUpdates(CommercePipelineExecutionContext context, List<CommerceEntity> updates)
+        private async Task PersistUpdates(List<CommerceEntity> updates)
         {
             if (updates.Any())
             {
@@ -155,12 +160,12 @@ namespace Sitecore.Services.Examples.SynchronizeCatalog
                 });
 
                 var items = new PersistEntitiesArgument(updateArguments);
-                await _commerceCommander.Pipeline<IUpdateEntitiesPipeline>().Run(items, context).ConfigureAwait(false);
+                await _commerceCommander.Pipeline<IUpdateEntitiesPipeline>().Run(items, _context).ConfigureAwait(false);
                 Log($"Ending {updates.First().GetType().Name} updates");
             }
         }
 
-        private async Task PersistDeletes(CommercePipelineExecutionContext context, List<CommerceEntity> deletes)
+        private async Task PersistDeletes(List<CommerceEntity> deletes)
         {
             if (deletes.Any())
             {
@@ -172,12 +177,12 @@ namespace Sitecore.Services.Examples.SynchronizeCatalog
                 });
 
                 var items = new DeleteEntitiesArgument(deleteSellableItemsArguments);
-                await _commerceCommander.Pipeline<IDeleteEntitiesPipeline>().Run(items, context).ConfigureAwait(false);
-                Log($"Starting {deletes.First().GetType().Name} deletes");
+                await _commerceCommander.Pipeline<IDeleteEntitiesPipeline>().Run(items, _context).ConfigureAwait(false);
+                Log($"Ending {deletes.First().GetType().Name} deletes");
             }
         }
 
-        private async Task ProcessSellableItemsAndVariants(CommercePipelineExecutionContext context, IList<CommerceEntity> deletes, IList<CommerceEntity> updates, IList<CommerceEntity> adds)
+        private async Task ProcessSellableItemsAndVariants(ICollection<CommerceEntity> deletes, ICollection<CommerceEntity> updates, IList<CommerceEntity> adds)
         {
             var findEntityArguments = new List<FindEntityArgument>();
 
@@ -203,7 +208,7 @@ namespace Sitecore.Services.Examples.SynchronizeCatalog
 
             Log("Starting find of sellable items to update.");
             var findEntitiesArgument = new FindEntitiesArgument(findEntityArguments, typeof(SellableItem));
-            var foundSellableItems = await _commerceCommander.Pipeline<IFindEntitiesPipeline>().Run(findEntitiesArgument, context).ConfigureAwait(false);
+            var foundSellableItems = await _commerceCommander.Pipeline<IFindEntitiesPipeline>().Run(findEntitiesArgument, _context).ConfigureAwait(false);
             Log("Ending find of sellable items to update.");
 
             foreach (var sourceProduct in _synchronizeCatalogArgument.Products)
@@ -267,6 +272,8 @@ namespace Sitecore.Services.Examples.SynchronizeCatalog
                 AddListPriceToSellableItem(sourceProduct, destinationProduct);
                 AddTagsToSellableItem(sourceProduct, destinationProduct);
 
+                SetProductCustomFields(sourceProduct, destinationProduct);
+
                 if (destinationProduct.IsPersisted)
                 {
                     updates.Add(destinationProduct);
@@ -282,7 +289,7 @@ namespace Sitecore.Services.Examples.SynchronizeCatalog
             ProcessVariants(foundSellableItems, updates, adds);
         }
 
-        private async Task ProcessCatalogs(CommercePipelineExecutionContext context, ICollection<CommerceEntity> updateCatalogs, ICollection<CommerceEntity> addCatalogs)
+        private async Task ProcessCatalogs(ICollection<CommerceEntity> updateCatalogs, ICollection<CommerceEntity> addCatalogs)
         {
             var findEntityArguments = new List<FindEntityArgument>();
 
@@ -298,7 +305,7 @@ namespace Sitecore.Services.Examples.SynchronizeCatalog
 
             Log("Starting find of catalogs to update.");
             var findEntitiesArgument = new FindEntitiesArgument(findEntityArguments, typeof(Commerce.Plugin.Catalog.Catalog));
-            var foundCatalogs = await _commerceCommander.Pipeline<IFindEntitiesPipeline>().Run(findEntitiesArgument, context).ConfigureAwait(false);
+            var foundCatalogs = await _commerceCommander.Pipeline<IFindEntitiesPipeline>().Run(findEntitiesArgument, _context).ConfigureAwait(false);
             Log("Ending find of catalogs to update.");
 
             foreach (var sourceCatalog in _synchronizeCatalogArgument.Catalogs)
@@ -328,7 +335,7 @@ namespace Sitecore.Services.Examples.SynchronizeCatalog
                     {
                         Log($"{sourceCatalog.Id} has been marked for purging, run minion to complete the process");
                         destinationCatalog.AddComponents(new PurgeCatalogsComponent());
-                        destinationCatalog.GetComponent<TransientListMembershipsComponent>().Memberships.Add(context.GetPolicy<KnownCatalogListsPolicy>().PurgeCatalogs);
+                        destinationCatalog.GetComponent<TransientListMembershipsComponent>().Memberships.Add(_context.GetPolicy<KnownCatalogListsPolicy>().PurgeCatalogs);
                     }
 
                     updateCatalogs.Add(destinationCatalog);
@@ -349,7 +356,7 @@ namespace Sitecore.Services.Examples.SynchronizeCatalog
             }
         }
 
-        private async Task ProcessCategories(CommercePipelineExecutionContext context, ICollection<CommerceEntity> updates, ICollection<CommerceEntity> adds)
+        private async Task ProcessCategories(ICollection<CommerceEntity> updates, ICollection<CommerceEntity> adds)
         {
             var findEntityArguments = new List<FindEntityArgument>();
 
@@ -365,7 +372,8 @@ namespace Sitecore.Services.Examples.SynchronizeCatalog
 
             Log("Starting find of category to update.");
             var findEntitiesArgument = new FindEntitiesArgument(findEntityArguments, typeof(Commerce.Plugin.Catalog.Category));
-            var found = await _commerceCommander.Pipeline<IFindEntitiesPipeline>().Run(findEntitiesArgument, context)
+
+            var foundCategories = await _commerceCommander.Pipeline<IFindEntitiesPipeline>().Run(findEntitiesArgument, _context)
                 .ConfigureAwait(false);
 
             Log("Ending find of category to update.");
@@ -373,7 +381,7 @@ namespace Sitecore.Services.Examples.SynchronizeCatalog
             foreach (var sourceCategory in _synchronizeCatalogArgument.Categories)
             {
                 Log($"Starting processing of category {sourceCategory.IdWithCatalog()}");
-                var destinationCategory = found.OfType<Commerce.Plugin.Catalog.Category>().FirstOrDefault(x =>
+                var destinationCategory = foundCategories.OfType<Commerce.Plugin.Catalog.Category>().FirstOrDefault(x =>
                     x.Id == sourceCategory.FullIdWithCatalog);
 
                 if (destinationCategory == null)
@@ -410,7 +418,7 @@ namespace Sitecore.Services.Examples.SynchronizeCatalog
                         Log($"{sourceCategory.IdWithCatalog()} has been marked for purging, run minion to complete the process");
                         destinationCategory.AddComponents(new PurgeCategoriesComponent());
                         destinationCategory.GetComponent<TransientListMembershipsComponent>().Memberships
-                            .Add(context.GetPolicy<KnownCatalogListsPolicy>().PurgeCategories);
+                            .Add(_context.GetPolicy<KnownCatalogListsPolicy>().PurgeCategories);
                     }
 
                     updates.Add(destinationCategory);
@@ -537,6 +545,8 @@ namespace Sitecore.Services.Examples.SynchronizeCatalog
                     destinationProduct.GetComponent<ItemVariationsComponent>()
                         .ChildComponents
                         .Add(destinationVariation);
+
+                SetVariantCustomFields(sourceVariant, destinationVariation);
 
                 Log($"Ending processing of variant {sourceVariant.Id}");
             }

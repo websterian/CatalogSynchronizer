@@ -19,16 +19,14 @@ using Sitecore.Services.Examples.SynchronizeCatalog.Policies;
 
 namespace Sitecore.Services.Examples.SynchronizeCatalog.Pipelines.Blocks
 {
-    [PipelineDisplayName("Orders.block.GetModelsFromFileBlock")]
+    [PipelineDisplayName("GetModelsFromFileBlock")]
     public class GetModelsFromFileBlock : PipelineBlock<SynchronizeCatalogArgument, SynchronizeCatalogArgument, CommercePipelineExecutionContext>
     {
         private readonly IMapper _mapper;
-        private readonly CommerceCommander _commerceCommander;
 
-        public GetModelsFromFileBlock(IMapper mapper, CommerceCommander commerceCommander)
+        public GetModelsFromFileBlock(IMapper mapper)
         {
             _mapper = mapper;
-            _commerceCommander = commerceCommander;
         }
 
         public override async Task<SynchronizeCatalogArgument> Run(SynchronizeCatalogArgument arg, CommercePipelineExecutionContext context)
@@ -39,6 +37,9 @@ namespace Sitecore.Services.Examples.SynchronizeCatalog.Pipelines.Blocks
             arg.Variants = await ProcessFileType<Variant>(policy.SourceFolderLocation, policy.SuccessFolderLocation, context);
             arg.Categories = await ProcessFileType<Category>(policy.SourceFolderLocation, policy.SuccessFolderLocation, context);
             arg.Catalogs = await ProcessFileType<Catalog>(policy.SourceFolderLocation, policy.SuccessFolderLocation, context);
+
+            arg.Options.ExcludeLogInResults = policy.ExcludeLogInResults;
+            arg.Options.SkipRelationships = policy.SkipRelationships;
 
             return arg;
         }

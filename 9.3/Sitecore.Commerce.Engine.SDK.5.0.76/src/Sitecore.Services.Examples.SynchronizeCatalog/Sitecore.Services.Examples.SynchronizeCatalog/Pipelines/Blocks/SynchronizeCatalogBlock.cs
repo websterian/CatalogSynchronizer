@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Sitecore.Commerce.Core;
 using Sitecore.Framework.Conditions;
 using Sitecore.Framework.Pipelines;
+using Sitecore.Services.Examples.SynchronizeCatalog.Framework;
 using Sitecore.Services.Examples.SynchronizeCatalog.Models;
 using Sitecore.Services.Examples.SynchronizeCatalog.Pipelines.Arguments;
 
@@ -22,7 +23,7 @@ namespace Sitecore.Services.Examples.SynchronizeCatalog.Pipelines.Blocks
         {
             Condition.Requires(arg).IsNotNull($"{Name}: The argument can not be null");
 
-            return await new CatalogSynchronizer(_commerceCommander).Run(arg, context).ConfigureAwait(false);
+            return await new CatalogSynchronizer(_commerceCommander, context).Run(arg).ConfigureAwait(false);
         }
     }
 }

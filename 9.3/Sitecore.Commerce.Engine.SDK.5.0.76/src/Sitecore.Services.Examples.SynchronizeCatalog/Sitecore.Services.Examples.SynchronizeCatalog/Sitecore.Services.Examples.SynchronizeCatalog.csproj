@@ -15,6 +15,9 @@
     <RootNamespace>Sitecore.Services.Examples.SynchronizeCatalog</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Remove="test.cs" />
+  </ItemGroup>
+  <ItemGroup>
     <None Remove="Csv\ExampleFiles\catalogeaad0533-2d6e-4e7e-bca4-35c7a677f14d.csv" />
     <None Remove="Csv\ExampleFiles\categoryd3a14ffa-fe41-453f-9bdf-5bc7c351e053.csv" />
     <None Remove="PlugIn - Copy.SynchronizeCatalog.PolicySet-1.0.0.json" />
@@ -29,7 +32,7 @@
 
   <ItemGroup>
     <Content Include="ConfigureSitecore.cs" />
-    <Content Include="PlugIn.SynchronizeCatalog.PolicySet-1.0.0.json">
+    <Content Include="Policies\PlugIn.SynchronizeCatalog.PolicySet-1.0.0.json">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
